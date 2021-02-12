@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 class FileStorage():
     """Defines the attributes and methods for this class"""
 
-    __file_path = "json.file"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -36,7 +36,7 @@ class FileStorage():
         try:
             with open(self.__file_path, 'r') as myfile:
                 obj_dict = json.load(myfile)
-            for key in obj_dict:
-                self.__objects[key] = BaseModel(**obj_dict[key])
-        except:
+            for key, value in obj_dict.items():
+                self.__objects[key] = BaseModel(**value)
+        except FileNotFoundError:
             pass
