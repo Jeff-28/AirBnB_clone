@@ -71,8 +71,9 @@ class HBNBCommand(cmd.Cmd):
         all_objs = storage.all()
         for obj_id in all_objs.keys():
             if (obj_id == k):
-                obj = all_objs[obj_id]
-                print(obj)
+                all_objs.pop(k)
+                storage.__objects = all_objs
+                storage.save()
                 return
             print("** instance no found **")
 
@@ -92,6 +93,9 @@ class HBNBCommand(cmd.Cmd):
 
     def help_show(self):
         print("Show command to show the string representation of instance\n")
+
+    def help_destroy(self):
+        print("Delete an instance\n")
 
 
     def emptyline(self):
