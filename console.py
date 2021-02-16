@@ -6,7 +6,7 @@
 
 import cmd
 import json
-from models.engine.file_storage import FileStorage
+from models import storage
 from models.base_model import BaseModel
 
 
@@ -46,26 +46,36 @@ class HBNBCommand(cmd.Cmd):
         elif len(x) == 1:
             print("** instance id missing **")
             return
-        storage = FileStorage()
-        for key in storage.__objects:
-            print(key)
-            s = key.split('.')
-            if s[1] == x[1]:
-                print(s[0])
-                print(storage.__objects[key])
-                obj = s[0](**storage.__objects[key])
-                print(obj.__str__)
+        k = "{:s}.{:s}".format(x[0], x[1])
+        all_objs = storage.all()
+        for obj_id in all_objs.keys():
+            if (obj_id == k):
+                obj = all_objs[obj_id]
+                print(obj)
                 return
+        print("** instance no found **")
 
-        """
-        with open("file.json", 'r') as myfile:
-            obj_dict = json.load(myfile)
-            for key in obj_dict.keys():
-                s = key.split('.')
-                if s[1] == x[1]:
-                    print(key.__str__)
-                    return
-            print("** no instance found **")"""
+
+    def do_destroy(self, info):
+        if len(info) == 0:
+            print("** class name missing **")
+            return
+        x = info.split(' ')
+        if x[0] != "BaseModel":
+            print("** class doesn't exist **")
+            return
+        elif len(x) == 1:
+            print("** instance id missing **")
+            return
+        k = "{:s}.{:s}".format(x[0], x[1])
+        all_objs = storage.all()
+        for obj_id in all_objs.keys():
+            if (obj_id == k):
+                obj = all_objs[obj_id]
+                print(obj)
+                return
+            print("** instance no found **")
+
 
     """Help documentation"""
     def help_EOF(self):
