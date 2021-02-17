@@ -15,22 +15,23 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 
-cls_dict = {"BaseModel": BaseModel, "User": User, "City": City, "State": State, "Amenity": Amenity, "Place": Place, "Review": Review}
+
+cls_dict = {"BaseModel": BaseModel, "User": User, "City": City,
+            "State": State, "Amenity": Amenity, "Place": Place,
+            "Review": Review}
+
 
 class HBNBCommand(cmd.Cmd):
     """Class for the console"""
 
     prompt = '(hbnb) '
 
-
     """Commands"""
     def do_EOF(self, args):
         return True
 
-
     def do_quit(self, args):
         return True
-
 
     def do_create(self, args):
         if len(args) == 0:
@@ -40,7 +41,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             new = cls_dict[args]()
             print(new.id)
-
 
     def do_show(self, info):
         if len(info) == 0:
@@ -60,7 +60,6 @@ class HBNBCommand(cmd.Cmd):
                 print(all_objs[obj_id])
                 return
         print("** no instance found **")
-
 
     def do_destroy(self, info):
         if len(info) == 0:
@@ -83,7 +82,6 @@ class HBNBCommand(cmd.Cmd):
                 return
         print("** no instance found **")
 
-
     def do_all(self, arg):
         x = []
         if len(arg) == 0:
@@ -105,7 +103,6 @@ class HBNBCommand(cmd.Cmd):
                 print(x)
             else:
                 print("** class doesn't exist **")
-
 
     def do_update(self, arg):
         if len(arg) == 0:
@@ -140,35 +137,27 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
 
-
     """Help documentation"""
     def help_EOF(self):
-        print ("End-of-file command to exit the program\n")
-
+        print("End-of-file command to exit the program\n")
 
     def help_quit(self):
-        print ("Quit command to exit the program\n")
-
+        print("Quit command to exit the program\n")
 
     def help_create(self):
         print("Create command to create a new instane of BaseModel\n")
 
-
     def help_show(self):
         print("Show command to show the string representation of instance\n")
-
 
     def help_destroy(self):
         print("Delete an instance\n")
 
-
     def help_all(self):
-        print("Prints all string representation of all instances based or not on the class name\n")
-
+        print("Prints all string representation of all instances\n")
 
     def help_update(self):
-        print("Updates an instance based on the class name and id by adding or updating attribute\n")
-
+        print("Updates an instance based on the class\n")
 
     def emptyline(self):
         if self.lastcmd:
