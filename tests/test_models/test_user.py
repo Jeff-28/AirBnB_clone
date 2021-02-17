@@ -23,3 +23,5 @@ class TestUser(unittest.TestCase):
         self.assertIs(type(self.user1.password), str)
         self.assertIs(type(self.user1.first_name), str)
         self.assertIs(type(self.user1.last_name), str)
+        self.assertIs(type(self.user1.id), str)
+        self.assertIs(type(self.user1.created_at), str)
