@@ -13,7 +13,7 @@ from models.state import State
 from models.user import User
 
 cls = {"BaseModel": BaseModel, "Amenity": Amenity, "City": City,
-       "State": State, "Review": Review, "User": User}
+       "Place": Place, "State": State, "Review": Review, "User": User}
 
 
 class FileStorage():
