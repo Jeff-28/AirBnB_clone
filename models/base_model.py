@@ -4,8 +4,10 @@ Base Module - defines all common attributes/methods for other classes
 """
 
 from datetime import datetime
-import uuid
 import models
+import uuid
+
+time = "%Y-%m-%dT%H:%M:%S.%f"
 
 
 class BaseModel():
@@ -15,16 +17,12 @@ class BaseModel():
         """Initializes an object with its attributes"""
         if kwargs:
             for key, value in kwargs.items():
-                if key != '__class__':
+                if key != "__class__":
                     setattr(self, key, value)
-                if hasattr(self, 'created_at') and
-                type(self.created_at) is str:
-                    self.created_at = datetime.strptime(kwargs['created_at'],
-                                                        "%Y-%m-%dT%H:%M:%S.%f")
-                if hasattr(self, 'updated_at') and
-                type(self.updated_at) is str:
-                    self.updated_at = datetime.strptime(kwargs['updated_at'],
-                                                        "%Y-%m-%dT%H:%M:%S.%f")
+            if hasattr(self, "created_at") and type(self.created_at) is str:
+                self.created_at = datetime.strptime(kwargs["created_at"], time)
+            if hasattr(self, "updated_at") and type(self.updated_at) is str:
+                self.updated_at = datetime.strptime(kwargs["updated_at"], time)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.today()
@@ -48,11 +46,7 @@ class BaseModel():
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         if "created_at" in obj_dict:
-            obj_dict['created_at'] = obj_dict["created_at"].strftime("%Y-%m-\
-                                                                     %dT%H:%\
-                                                                     M:%S.%f")
+            obj_dict['created_at'] = obj_dict['created_at'].strftime(time)
         if "updated_at" in obj_dict:
-            obj_dict['updated_at'] = obj_dict["updated_at"].strftime("%Y-%m-\
-                                                                     %dT%H:%\
-                                                                     M:%S.%f")
+            obj_dict['updated_at'] = obj_dict['updated_at'].strftime(time)
         return obj_dict
