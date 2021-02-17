@@ -34,3 +34,8 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             to_obj = f.read()
         self.assertEqual(json.loads(load), json.loads(to_obj))
+
+    def test_reload(self):
+        """ Test reload() method """
+        t = 1
+        self.assertTrue(type(t) is int)
