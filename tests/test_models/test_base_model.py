@@ -25,6 +25,12 @@ class TestBaseModel(unittest.TestCase):
                                                 self.base1.__dict__)
         self.assertEqual(str(self.base1), expected)
 
+    def test_save(self):
+        """Tests the save method"""
+        before_save = self.base1.updated_at
+        self.base1.save()
+        self.assertNotEqual(before_save, self.base1.updated_at)
+
     def test_to_dict(self):
         """Tests to_dict method"""
         dic = self.base1.to_dict()
