@@ -15,9 +15,11 @@ class TestState(unittest.TestCase):
     def setUpClass(cls):
         """Sets the objects to be tested"""
         cls.state1 = State()
+        cls.state1.name = "betty"
 
     def test_new_instance(self):
         """Tests the creation of a new instance"""
+        self.assertIs(type(self.state1.name), str)
         self.assertIs(type(self.state1.id), str)
         self.assertIs(type(self.state1.created_at), datetime.datetime)
         self.assertIs(type(self.state1.updated_at), datetime.datetime)
