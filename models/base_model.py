@@ -17,10 +17,14 @@ class BaseModel():
             for key, value in kwargs.items():
                 if key != '__class__':
                     setattr(self, key, value)
-                if hasattr(self, 'created_at') and type(self.created_at) is str:
-                    self.created_at = datetime.strptime(kwargs['created_at'], "%Y-%m-%dT%H:%M:%S.%f")
-                if hasattr(self, 'updated_at') and type(self.updated_at) is str:
-                    self.updated_at = datetime.strptime(kwargs['updated_at'], "%Y-%m-%dT%H:%M:%S.%f")
+                if hasattr(self, 'created_at') and
+                type(self.created_at) is str:
+                    self.created_at = datetime.strptime(kwargs['created_at'],
+                                                        "%Y-%m-%dT%H:%M:%S.%f")
+                if hasattr(self, 'updated_at') and
+                type(self.updated_at) is str:
+                    self.updated_at = datetime.strptime(kwargs['updated_at'],
+                                                        "%Y-%m-%dT%H:%M:%S.%f")
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.today()
@@ -44,7 +48,11 @@ class BaseModel():
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
         if "created_at" in obj_dict:
-            obj_dict['created_at'] = obj_dict["created_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
+            obj_dict['created_at'] = obj_dict["created_at"].strftime("%Y-%m-\
+                                                                     %dT%H:%\
+                                                                     M:%S.%f")
         if "updated_at" in obj_dict:
-            obj_dict['updated_at'] = obj_dict["updated_at"].strftime("%Y-%m-%dT%H:%M:%S.%f")
+            obj_dict['updated_at'] = obj_dict["updated_at"].strftime("%Y-%m-\
+                                                                     %dT%H:%\
+                                                                     M:%S.%f")
         return obj_dict
