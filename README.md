@@ -38,7 +38,7 @@ $ update
 ```
  
  
-Some of these commands need arguments to rerieve some information.
+Some of these commands need arguments to retrieve some information.
  
 **See Examples**
  
@@ -104,5 +104,5 @@ user@ubuntu:~/AirBnB$ ./console.py
 (hbnb) create BaseModel
 49faff9a-6318-451f-87b6-910505c55907
 (hbnb) quit
-user@ubuntu:~/AirBnB$ ./console.py
+user@ubuntu:~/AirBnB$
 ```
