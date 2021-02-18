@@ -46,14 +46,14 @@ Some of these commands need arguments to rerieve some information.
 
 ## Examples
 
-*Start the Command Interpreter*
+#### *Start the Command Interpreter*
 ```
 user@ubuntu:~/AirBnB$ ./console.py
 (hbnb)
 ```
 
 
-*Using help command*
+#### *Using help command*
 ```
 (hbnb) help
 
@@ -74,7 +74,7 @@ user@ubuntu:~/AirBnB$
 ```
 
 
-*Using EOF command*
+#### *Using EOF command*
 To exit the program
 
 ```
@@ -84,7 +84,7 @@ user@ubuntu:~/AirBnB$
 ```
 
 
-*Using quit command*
+#### *Using quit command*
 To exit the program
 
 ```
@@ -94,7 +94,7 @@ user@ubunt:~/AirBnB$
 ```
 
 
-*Using create command*
+#### *Using create command*
 Create a new instance based in a class and print the id. This command need a class name as argument.
 
 ```
