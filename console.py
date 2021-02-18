@@ -55,9 +55,15 @@ class HBNBCommand(cmd.Cmd):
                 char = cls + ' ' + arg[1]
                 self.do_destroy(char)
             elif arg[0] == 'update':
-                opt = str(arg[1].replace(',', ''))
-                char = cls + ' ' + opt
-                self.do_update(char)
+                sp = arg[1].split(', ')
+                if type(sp[1]) is str:
+                    opt = str(arg[1].replace(',', ''))
+                    char = cls + ' ' + opt
+                    self.do_update(char)
+                else:
+                    for key, value in sp[1].items():
+                        var = cls + ' ' + sp[0] + ' ' + key + value
+                        self.do_update(var)
             else:
                 pass
         except IndexError:
