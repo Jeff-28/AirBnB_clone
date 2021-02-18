@@ -33,6 +33,35 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, args):
         return True
 
+    def default(self, args):
+        try:
+            cmd = args.split('.')
+            cls = cmd[0]
+            arg = cmd[1].strip('()').split('(')
+            if arg[0] == 'all':
+                self.do_all(cls)
+            elif arg[0] == 'count':
+                num = FileStorage._FileStorage__objects
+                num_list = str(num.keys())
+                cls_count = num_list.count(cls)
+                print(cls_count)
+            elif arg[0] == 'show':
+                char = ''
+                char = cls + ' ' + arg[1]
+                self.do_show(char)
+            elif arg[0] == 'destroy':
+                char = ''
+                char = cls + ' ' + arg[1]
+                self.do_destroy(char)
+            elif arg[0] == 'update':
+                opt = str(arg[1].replace(',', ''))
+                char = cls + ' ' + opt
+                self.do_update(char)
+            else:
+                pass
+        except IndexError:
+            self.stdout.write('*** Unknown syntax: %s\n'%arg)
+
     def do_create(self, args):
         if len(args) == 0:
             print("** class name missing **")
