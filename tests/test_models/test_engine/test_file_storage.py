@@ -23,6 +23,15 @@ class TestFileStorage(unittest.TestCase):
         """ Test new() method """
         key = "{:s}.{:s}".format(base1.__class__.__name__, base1.id)
         self.assertTrue(key in storage.all())
+        objects = storage.all()
+        FileStorage._FileStorage__objects = {}
+        dic = {}
+        for key, value in objects.items():
+            obj = value
+            storage.new(obj)
+            k = obj.__class__.__name__ + "." + obj.id
+            dic[k] = obj
+        self.assertEqual(dic, FileStorage._FileStorage__objects)
 
     def test_save(self):
         """ Test save() method """
