@@ -1,7 +1,7 @@
 # AirBnB clone - The Console
 
 ## Table of contents
-* [Description of the project] (#description-of-the-project)
+* [Description of the project] (#description-of-the-project "Goto description-of-the-project")
 * [Command Interpreter] (#Console)
 
 ## Description of the project
