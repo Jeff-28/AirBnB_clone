@@ -64,11 +64,43 @@ EOF  all  create  destroy  help  quit  show  update
 (hbnb)
 ```
 
-If type help with other command you can retrieve the documentation of that command.
+If type *help* with other command you can retrieve the documentation of that command.
 ```
 (hbnb) help quit
 Quit command to exit the program
 
 (hbnb) quit
 user@ubuntu:~/AirBnB$
+```
+
+
+*Using EOF command*
+To exit the program
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) EOF
+user@ubuntu:~/AirBnB$
+```
+
+
+*Using quit command*
+To exit the program
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) quit
+user@ubunt:~/AirBnB$
+```
+
+
+*Using create command*
+Create a new instance based in a class and print the id. This command need a class name as argument.
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) create BaseModel
+49faff9a-6318-451f-87b6-910505c55907
+(hbnb) quit
+user@ubuntu:~/AirBnB$ ./console.py
 ```
