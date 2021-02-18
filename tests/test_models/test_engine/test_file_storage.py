@@ -44,6 +44,11 @@ class TestFileStorage(unittest.TestCase):
             to_obj = f.read()
         self.assertEqual(json.loads(load), json.loads(to_obj))
 
+    def test_class_attributes(self):
+        """Tests that attributes are correct type"""
+        self.assertIs(type(FileStorage._FileStorage__file_path), str)
+        self.assertIs(type(FileStorage._FileStorage__objects), dict)
+
     def test_reload(self):
         """ Test reload() method """
         t = 1
