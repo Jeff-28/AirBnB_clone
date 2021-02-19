@@ -57,13 +57,13 @@ class HBNBCommand(cmd.Cmd):
                 self.do_destroy(char)
             elif arg[0] == 'update':
                 attr = arg[1].split(', ')
-                str_dic = attr[1] + ", " + attr[2]
-                if attr[1][0] == '{':
+                idd = attr[0]
+                del attr[0]
+                str_dic = ", ".join(attr)
+                print(str_dic)
+                if attr[0][0] == '{':
                     dic = ast.literal_eval(str_dic)
-                    for key, value in dic.items():
-                        info = cls + " " + attr[0] + " " + key + " " +\
-                                str(value)
-                        self.do_update(info)
+                    self.dict_update(cls, idd, dic)
                     return
                 opt = str(arg[1].replace(',', ''))
                 char = cls + ' ' + opt
@@ -72,6 +72,11 @@ class HBNBCommand(cmd.Cmd):
                 pass
         except IndexError:
             self.stdout.write('*** Unknown syntax: %s\n' % arg)
+
+    def dict_update(self, clas, idd, dic):
+        """Dictionary version of update method"""
+        for key, value in dic.items():
+            self.do_update(" ".join([clas, idd, key, str(value)]))
 
     def do_create(self, args):
         if len(args) == 0:
