@@ -15,6 +15,7 @@ from models.state import State
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+import ast
 
 
 cls_dict = {"BaseModel": BaseModel, "User": User, "City": City,
@@ -55,19 +56,22 @@ class HBNBCommand(cmd.Cmd):
                 char = cls + ' ' + arg[1]
                 self.do_destroy(char)
             elif arg[0] == 'update':
-                sp = arg[1].split(', ')
-                if type(sp[1]) is str:
-                    opt = str(arg[1].replace(',', ''))
-                    char = cls + ' ' + opt
-                    self.do_update(char)
-                else:
-                    for key, value in sp[1].items():
-                        var = cls + ' ' + sp[0] + ' ' + key + value
-                        self.do_update(var)
+                attr = arg[1].split(', ')
+                str_dic = attr[1] + ", " + attr[2]
+                if attr[1][0] == '{':
+                    dic = ast.literal_eval(str_dic)
+                    for key, value in dic.items():
+                        info = cls + " " + attr[0] + " " + key + " " +\
+                                str(value)
+                        self.do_update(info)
+                    return
+                opt = str(arg[1].replace(',', ''))
+                char = cls + ' ' + opt
+                self.do_update(char)
             else:
                 pass
         except IndexError:
-            self.stdout.write('*** Unknown syntax: %s\n'%arg)
+            self.stdout.write('*** Unknown syntax: %s\n' % arg)
 
     def do_create(self, args):
         if len(args) == 0:
