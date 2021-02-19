@@ -5,6 +5,7 @@ Test Module - contains tests for the BaseModel class
 
 from models.base_model import BaseModel
 import unittest
+import models
 
 
 class TestBaseModel(unittest.TestCase):
@@ -38,3 +39,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue('__class__' in dic)
         self.assertIs(type(dic['created_at']), str)
         self.assertIs(type(dic['updated_at']), str)
+
+    def test_storage(self):
+        """Tests the storage instance"""
+        dic = models.storage.all()
+        self.assertTrue(dic)
