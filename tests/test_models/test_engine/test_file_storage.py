@@ -8,6 +8,7 @@ import json
 from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 from models import storage
+import os
 
 base1 = BaseModel()
 
@@ -51,5 +52,11 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         """ Test reload() method """
-        t = 1
-        self.assertTrue(type(t) is int)
+        base = BaseModel()
+        key = "{}.{}".format(base.__class__.__name__, base.id)
+        old_copy = storage.all()
+        base.save()
+        storage.reload()
+        new_copy = storage.all()
+        self.assertTrue(key in new_copy)
+        self.assertTrue(old_copy == new_copy)
