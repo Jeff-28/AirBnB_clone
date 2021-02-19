@@ -6,6 +6,8 @@ Test Module - contains tests for the BaseModel class
 from models.base_model import BaseModel
 import unittest
 import models
+from models import storage
+import os
 
 
 class TestBaseModel(unittest.TestCase):
@@ -28,9 +30,18 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Tests the save method"""
-        before_save = self.base1.updated_at
         self.base1.save()
-        self.assertNotEqual(before_save, self.base1.updated_at)
+        self.assertNotEqual(self.base1.created_at, self.base1.updated_at)
+        base2 = BaseModel()
+        idd = base2.id
+        base2.name = "betty"
+        base2.save()
+        storage.reload()
+        key = "BaseModel.{}".format(idd)
+        objs = storage.all()[key]
+        self.assertTrue(hasattr(objs, "name"))
+        self.assertTrue(objs.name == "betty")
+        self.assertTrue(os.path.exists('file.json'))
 
     def test_to_dict(self):
         """Tests to_dict method"""
