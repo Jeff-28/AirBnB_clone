@@ -29,6 +29,11 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.user1.first_name, "Betty")
         self.assertEqual(self.user1.last_name, "Holbie")
 
+    def test_name(self):
+        """Tests the name attribute"""
+        self.assertIs(type(self.user1.first_name), str)
+        self.assertEqual(self.user1.first_name, "Betty")
+
     def test_inheritance(self):
         """Tests that user inherits from BaseModel"""
         user = User()
