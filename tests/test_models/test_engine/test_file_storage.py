@@ -60,3 +60,16 @@ class TestFileStorage(unittest.TestCase):
         new_copy = storage.all()
         self.assertTrue(key in new_copy)
         self.assertTrue(old_copy == new_copy)
+
+    def test_save_reload(self):
+        """More tests for save and reload"""
+        base = BaseModel()
+        idd = base.id
+        base.name = "betty"
+        base.save()
+        storage.reload()
+        key = "BaseModel.{}".format(idd)
+        objs = storage.all()[key]
+        self.assertTrue(hasattr(objs, "name"))
+        self.assertTrue(objs.name == "betty")
+        self.assertTrue(os.path.exists('file.json'))
