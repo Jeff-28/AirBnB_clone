@@ -6,6 +6,7 @@ Test Module - contains tests for the User class
 import unittest
 from models.user import User
 from models.base_model import BaseModel
+import datetime
 
 
 class TestUser(unittest.TestCase):
@@ -17,6 +18,7 @@ class TestUser(unittest.TestCase):
         cls.user1 = User(email="betty@holbertonschool.com",
                          password="betty", first_name="Betty",
                          last_name="Holbie")
+        cls.user2 = User()
 
     def test_new_instance(self):
         """Tests the creation of a new instance"""
@@ -28,6 +30,8 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.user1.password, "betty")
         self.assertEqual(self.user1.first_name, "Betty")
         self.assertEqual(self.user1.last_name, "Holbie")
+        self.assertIs(type(self.user2.id), str)
+        self.assertIs(type(self.user2.created_at), datetime.datetime)
 
     def test_name(self):
         """Tests the name attribute"""
