@@ -53,7 +53,9 @@ user@ubuntu:~/AirBnB$ ./console.py
 (hbnb)
 ```
  
- 
+
+
+
 #### *Using help command*
  
 ```
@@ -75,6 +77,8 @@ Quit command to exit the program
 user@ubuntu:~/AirBnB$
 ```
  
+
+
  
 #### *Using EOF command*
 To exit the program
@@ -86,6 +90,8 @@ user@ubuntu:~/AirBnB$
 ```
  
  
+
+
 #### *Using quit command*
 To exit the program
  
@@ -96,6 +102,8 @@ user@ubunt:~/AirBnB$
 ```
  
  
+
+
 #### *Using create command*
 Create a new instance based in a class and print the id. This command need a class name as argument.
  
@@ -103,6 +111,65 @@ Create a new instance based in a class and print the id. This command need a cla
 user@ubuntu:~/AirBnB$ ./console.py
 (hbnb) create BaseModel
 49faff9a-6318-451f-87b6-910505c55907
+(hbnb) quit
+user@ubuntu:~/AirBnB$
+```
+
+
+
+
+#### *Using show command*
+Prints the string representation of an instance. This command nedd a class name and id as argument.
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}
+(hbnb) quit
+user@ubuntu:~/AirBnB$
+```
+
+
+
+
+#### *Using destroy command*
+Delete an instance. This command need a class name and id as argument.
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) destroy BaseModel 49faff9a-6318-451f-87b6-910505c55907
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+*** no instance found ***
+(hbnb) quit
+user@ubuntu:~/AirBnB$
+```
+
+
+
+
+#### *Using all command*
+Prints all string representation of all instances based or not on the class name. 
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+["[BaseModel] (2dd6ef5c-467c-4f82-9521-a772ea7d84e9) {'id': '2dd6ef5c-467c-4f82-9521-a772ea7d84e9', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}", "[State] (0986ef5c-467c-4f82-9521-a772ea7123er) {'id': '0986ef5c-467c-4f82-9521-a772ea7123er', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[City] (76tgff9a-6318-451f-87b6-910505c89675) {'first_name': 'Betty', 'id': '76tgff9a-6318-451f-87b6-910505c89675', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}"]
+(hbnb) all BaseModel
+["[BaseModel] (2dd6ef5c-467c-4f82-9521-a772ea7d84e9) {'id': '2dd6ef5c-467c-4f82-9521-a772ea7d84e9', 'created_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639717), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 23, 639724)}", "[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}"]
+(hbnb) quit
+user@ubuntu:~/AirBnB$
+```
+
+
+
+
+#### *Using update command*
+Updates an instance based on the class name and id by adding or updating attribute.
+
+```
+user@ubuntu:~/AirBnB$ ./console.py
+(hbnb) update BaseModel 49faff9a-6318-451f-87b6-910505c55907 first_name "Betty"
+(hbnb) show BaseModel 49faff9a-6318-451f-87b6-910505c55907
+[BaseModel] (49faff9a-6318-451f-87b6-910505c55907) {'first_name': 'Betty', 'id': '49faff9a-6318-451f-87b6-910505c55907', 'created_at': datetime.datetime(2017, 10, 2, 3, 10, 25, 903293), 'updated_at': datetime.datetime(2017, 10, 2, 3, 11, 3, 49401)}
 (hbnb) quit
 user@ubuntu:~/AirBnB$
 ```
