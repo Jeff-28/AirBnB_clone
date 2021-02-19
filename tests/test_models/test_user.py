@@ -18,20 +18,27 @@ class TestUser(unittest.TestCase):
         cls.user1 = User(email="betty@holbertonschool.com",
                          password="betty", first_name="Betty",
                          last_name="Holbie")
-        cls.user2 = User()
 
     def test_new_instance(self):
         """Tests the creation of a new instance"""
-        self.assertIs(type(self.user1.email), str)
-        self.assertIs(type(self.user1.password), str)
-        self.assertIs(type(self.user1.first_name), str)
-        self.assertIs(type(self.user1.last_name), str)
+        user2 = User()
+        self.assertIs(type(user2.email), str)
+        self.assertIs(type(user2.password), str)
+        self.assertIs(type(user2.first_name), str)
+        self.assertIs(type(user2.last_name), str)
         self.assertEqual(self.user1.email, "betty@holbertonschool.com")
         self.assertEqual(self.user1.password, "betty")
         self.assertEqual(self.user1.first_name, "Betty")
         self.assertEqual(self.user1.last_name, "Holbie")
-        self.assertIs(type(self.user2.id), str)
-        self.assertIs(type(self.user2.created_at), datetime.datetime)
+        self.assertEqual(user2.email, "")
+        self.assertEqual(user2.password, "")
+        self.assertEqual(user2.first_name, "")
+        self.assertEqual(user2.last_name, "")
+        self.assertIs(type(user2.id), str)
+        self.assertIs(type(user2.created_at), datetime.datetime)
+        user5 = User()
+        user4 = User()
+        self.assertNotEqual(user4.id, user5.id)
 
     def test_name(self):
         """Tests the name attribute"""
